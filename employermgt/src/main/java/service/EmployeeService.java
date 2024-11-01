@@ -1,19 +1,22 @@
 package service;
 
+import exception.UserNotFoundException;
+import jakarta.transaction.Transactional;
 import model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import repo.EmployeeRepo;
 
-import java.nio.file.attribute.UserPrincipalNotFoundException;
 import java.util.List;
 import java.util.UUID;
-
-@Service  //to get springboot services
-public class Employeeservice {
+//to get springboot services
+@Service
+@Transactional
+public class EmployeeService {
     private final EmployeeRepo employeeRepo;
+
     @Autowired // bring dependency
-    public Employeeservice(EmployeeRepo employeeRepo) {
+    public EmployeeService(EmployeeRepo employeeRepo) {
         this.employeeRepo = employeeRepo;
     }
 
